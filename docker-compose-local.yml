@@ -1,0 +1,27 @@
+version: "3"
+services:
+  server:
+    build: .
+    container_name: bia
+    ports:
+      - 3001:8080
+    links:
+      - database
+    environment:
+      DB_USER: rasec
+      DB_PWD: treino-2024
+      DB_HOST: bia-db.cuvdlnah8sds.us-east-1.rds.amazonaws.com
+      DB_PORT: 5432
+  database:
+    image: postgres:14.11
+    container_name: database
+    environment:
+      - "POSTGRES_USER=rasec"
+      - "POSTGRES_PASSWORD=treino-2024"
+      - "POSTGRES_DB=bia-db"
+    ports:
+      - 5433:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:

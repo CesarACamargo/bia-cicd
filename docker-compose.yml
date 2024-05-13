@@ -1,0 +1,12 @@
+version: "3"
+services:
+  server:
+    build: .
+    ports:
+      - 80:8080
+
+    environment:
+      DB_USER: rasec
+      DB_PWD: treino-2024
+      DB_HOST: bia-db.cuvdlnah8sds.us-east-1.rds.amazonaws.com
+      DB_PORT: 5432
